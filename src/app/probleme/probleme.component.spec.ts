@@ -17,7 +17,24 @@ describe('ProblemeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Zone PRENOM invalide avec 2 caractere', () => {
+    
+  });
+
+  it('Zone PRENOM valide avec 3 caractere', () => {
+    
+  });
+
+  it('Zone PRENOM valide avec 200 caractere', () => {
+    
+  });
+
+  it('Zone PRENOM valide avec 10 espaces', () => {
+    
+  });
+
+  it('Zone PRENOM valide avec 2 espaces et 1 caractere', () => {
+    
   });
 });
+
