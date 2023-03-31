@@ -18,23 +18,34 @@ describe('ProblemeComponent', () => {
   });
 
   it('Zone PRENOM invalide avec 2 caractere', () => {
-    
+    let zone = component.problemeForm.get('prenom')
+    zone.setValue('a'.repeat(2));
+    let errors = zone.errors || {};
+    expect(errors['minlength']).toBeTruthy()
   });
 
   it('Zone PRENOM valide avec 3 caractere', () => {
-    
+    let zone = component.problemeForm.get('prenom')
+    zone.setValue('a'.repeat(3));
+    expect(zone.valid).toBeTruthy();
   });
 
   it('Zone PRENOM valide avec 200 caractere', () => {
-    
+    let zone = component.problemeForm.get('prenom')
+    zone.setValue('a'.repeat(200));
+    expect(zone.valid).toBeTruthy();
   });
 
   it('Zone PRENOM valide avec 10 espaces', () => {
-    
+    let zone = component.problemeForm.get('prenom')
+    zone.setValue(' '.repeat(10));
+    expect(zone.valid).toBeTruthy();
   });
 
   it('Zone PRENOM valide avec 2 espaces et 1 caractere', () => {
-    
+    let zone = component.problemeForm.get('prenom')
+    zone.setValue(' '.repeat(2) + 'a');
+    expect(zone.valid).toBeTruthy();
   });
 });
 
