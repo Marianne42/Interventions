@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProblemeComponent } from './probleme.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('ProblemeComponent', () => {
   let component: ProblemeComponent;
@@ -8,7 +9,8 @@ describe('ProblemeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProblemeComponent ]
+      declarations: [ ProblemeComponent ],
+      imports : [ReactiveFormsModule]
     })
     .compileComponents();
 
@@ -20,8 +22,7 @@ describe('ProblemeComponent', () => {
   it('Zone PRENOM invalide avec 2 caractere', () => {
     let zone = component.problemeForm.get('prenom')
     zone.setValue('a'.repeat(2));
-    let errors = zone.errors || {};
-    expect(errors['minlength']).toBeTruthy()
+    expect(zone.invalid).toBeTruthy()
   });
 
   it('Zone PRENOM valide avec 3 caractere', () => {
@@ -36,16 +37,16 @@ describe('ProblemeComponent', () => {
     expect(zone.valid).toBeTruthy();
   });
 
-  it('Zone PRENOM valide avec 10 espaces', () => {
+  it('Zone PRENOM invalide avec 10 espaces', () => {
     let zone = component.problemeForm.get('prenom')
     zone.setValue(' '.repeat(10));
-    expect(zone.valid).toBeTruthy();
+    expect(zone.invalid).toBeTrue();
   });
 
-  it('Zone PRENOM valide avec 2 espaces et 1 caractere', () => {
+  it('Zone PRENOM invalide avec 2 espaces et 1 caractere', () => {
     let zone = component.problemeForm.get('prenom')
     zone.setValue(' '.repeat(2) + 'a');
-    expect(zone.valid).toBeTruthy();
+    expect(zone.invalid).toBeTruthy();
   });
 });
 
