@@ -20,7 +20,13 @@ constructor(private fb: FormBuilder, private probleme: TypeproblemeService){ }
     this.problemeForm = this.fb.group({
       prenom: ['', [VerifierCaracteresValidator.longueurMinimum(3), Validators.required]],
       nom: ['', [Validators.maxLength(50), Validators.required]],
-      noTypeProbleme: ['', [Validators.required]]
+      noTypeProbleme: ['', [Validators.required]],
+      
+      courrielGroup: this.fb.group({
+        courriel: [{value: '', disabled: true}],
+        courrielConfirmation: [{value: '', disabled: true}],
+      }),
+    telephone: [{value: '', disabled: true}],
     });
 
     this.probleme.obtenirProbleme()

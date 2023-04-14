@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProblemeComponent } from './probleme.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TypeproblemeService } from './typeprobleme.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ProblemeComponent', () => {
   let component: ProblemeComponent;
@@ -10,7 +12,8 @@ describe('ProblemeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ProblemeComponent ],
-      imports : [ReactiveFormsModule]
+      imports : [ReactiveFormsModule, HttpClientModule],
+      providers:[TypeproblemeService]
     })
     .compileComponents();
 
@@ -48,5 +51,23 @@ describe('ProblemeComponent', () => {
     zone.setValue(' '.repeat(2) + 'a');
     expect(zone.invalid).toBeTruthy();
   });
+
+  it('#15 | Zone TELEPHONE est désactivée quand ne pas me notifier', () => {
+
+  });
+
+  it('#16 | Zone TELEPHONE est vide quand ne pas me notifier', () => {
+
+  });
+
+  it('#17 | Zone ADRESSE COURRIEL est désactivée quand ne pas me notifier', () => {
+
+  });
+
+  it('#18 | Zone CONFIRMER COURRIEL est désactivée quand ne pas me notifier', () => {
+
+  });
+
+  
 });
 
