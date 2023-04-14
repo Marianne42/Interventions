@@ -87,11 +87,37 @@
             <label for="noProblemeId" class="col-md-2 col-form-label text-right">Type de problème : </label>
             <div class="col-sm-10">
                   <select class="form-control"
-                  id="noProbleme"
-                  formControlName="noProbleme">
+                  id="noTypeProbleme"
+                  formControlName="noTypeProbleme" 
+                  [ngClass]="{'is-valid': (problemeForm.get('noTypeProbleme').touched || problemeForm.get('noTypeProbleme').dirty) &&
+                  problemeForm.get('noTypeProbleme').valid,
+                  'is-invalid': (problemeForm.get('noTypeProbleme').touched || problemeForm.get('noTypeProbleme').dirty) &&
+                  !problemeForm.get('noTypeProbleme').valid }">
+                 
+
                   <option value="">Sélectionner un type de problème (obligatoire)</option>
                   <option *ngFor="let cat of typeProblemes" [value]="cat.id">{{cat.descriptionTypeProbleme}}</option>
+
+                  
+
+                  
+
+                   
+                  
             </select>
+
+            <span class="form-text" *ngIf="(problemeForm.get('noTypeProbleme').touched ||
+                   problemeForm.get('noTypeProbleme').dirty) &&
+                   problemeForm.get('noTypeProbleme').errors">
+
+                  
+
+                   <span *ngIf="problemeForm.get('noTypeProbleme').errors['required']">
+                  <small class="text-muted">
+                   Veuillez selectionner un champ.
+                  </small>
+                  </span>
+            </span>
             </div>
       </div>
                   

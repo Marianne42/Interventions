@@ -20,7 +20,7 @@ constructor(private fb: FormBuilder, private probleme: TypeproblemeService){ }
     this.problemeForm = this.fb.group({
       prenom: ['', [VerifierCaracteresValidator.longueurMinimum(3), Validators.required]],
       nom: ['', [Validators.maxLength(50), Validators.required]],
-      noProbleme: ['']
+      noTypeProbleme: ['', [Validators.required]]
     });
 
     this.probleme.obtenirProbleme()
