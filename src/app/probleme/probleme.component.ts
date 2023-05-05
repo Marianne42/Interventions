@@ -28,7 +28,10 @@ constructor(private fb: FormBuilder, private probleme: TypeproblemeService){ }
         courrielConfirmation: [{value: '', disabled: true}],
       }),
       telephone: [{value: '', disabled: true}],
-      notification: ['pasnotification']
+      notification: ['pasnotification'],
+      descriptionProbleme: ['', [Validators.required, Validators.minLength(5)]],
+      noUnite:'',
+      dateProbleme:{value: Date(), disabled:true}
     });
 
     this.probleme.obtenirProbleme()
